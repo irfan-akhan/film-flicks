@@ -1,0 +1,79 @@
+$mainColor: #e84e7a;
+$whiteColor: #ffffff;
+.navbar {
+    display: flex;
+    height: 10vh;
+    width: 100vw;
+    color: $whiteColor;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    background-color: #222020;
+    padding: 0 1%;
+    z-index: 100;
+}
+.logo {
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    backface-visibility: hidden;
+
+    &__img {
+        width: 60px;
+    }
+    h3 {
+        padding: 3px 10px;
+        text-transform: uppercase;
+        font-size: 12px;
+        span {
+            font-size: 16px;
+            display: block;
+        }
+    }
+}
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10vw;
+    animation-name: moveInRight;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    backface-visibility: hidden;
+    img {
+        background-color: #222020d7;
+        width: 30px;
+        cursor: pointer;
+        &:last-child {
+            width: 33px;
+        }
+    }
+}
+
+// Animations
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80% {
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80% {
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

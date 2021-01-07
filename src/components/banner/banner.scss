@@ -1,0 +1,81 @@
+$btnBg: #e84e7a;
+.banner {
+    height: 100vh;
+    width: 100vw;
+    .name {
+        color: $btnBg;
+        font-size: 15px;
+    }
+    &__details {
+        animation: moveInBottom 3s ease-out 0.75s;
+        backface-visibility: hidden;
+        animation-fill-mode: backwards;
+        color: #fff;
+        margin-left: 10%;
+        width: 60vw;
+        display: flex;
+        height: inherit;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+    &__rating {
+        font-weight: 200;
+        font-size: 15px;
+    }
+    &__title {
+        margin: 0;
+    }
+    button {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: #000000;
+        border: none;
+        font-weight: bolder;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: $btnBg;
+        outline: none;
+        position: relative;
+        transition: all 0.2s;
+        &:hover {
+            background-color: #1e144d;
+            color: #f2f2f2;
+            transform: translateY(-5px);
+            box-shadow: 0 3px 10px#575177;
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+            }
+        }
+        &:active {
+            transform: translateY(-2px);
+            box-shadow: 0 1px 5px #575177;
+        }
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: #e84e7a;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.4s;
+        }
+    }
+}
+
+// Animations
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

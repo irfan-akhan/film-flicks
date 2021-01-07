@@ -1,0 +1,23 @@
+$titleColor: #f2f2f2;
+$headingColor: #ffffff;
+.row {
+    text-align: center;
+    margin-bottom: 15vh;
+    &__heading {
+        text-transform: uppercase;
+        color: $headingColor;
+        &::after {
+            content: ' ';
+            display: block;
+            width: 200px;
+            height: 1px;
+            background-color: #e84e7a;
+            margin: 0 auto;
+        }
+    }
+    &__movies {
+        display: flex;
+        gap: 1%;
+        justify-content: center;
+    }
+}

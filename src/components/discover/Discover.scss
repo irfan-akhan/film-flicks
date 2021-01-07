@@ -1,0 +1,30 @@
+.result__container {
+    margin: auto;
+    text-align: center;
+}
+.search__results {
+    text-align: start;
+}
+.search__movie__genre {
+    color: #dadada;
+    font-size: 15px;
+    span:first-child {
+        color: #e84e7a;
+    }
+}
+.loadmore__button {
+    margin: 50px 20px;
+    padding: 20px 50px;
+    background-color: #e84e7a;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bolder;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    &:hover {
+        background-color: #dadada;
+    }
+}

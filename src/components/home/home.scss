@@ -1,0 +1,46 @@
+$mainbgColor: #161130;
+$mainHeadingFontSize: 20px;
+$secondaryHeadingFontSize: 16px;
+body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: monospace;
+}
+.container {
+    height: 100vh;
+    width: 100vw;
+    font-family: monospace;
+    background-color: #161130;
+    font-size: $mainHeadingFontSize;
+    & .movies {
+        padding: 5%;
+        background-color: $mainbgColor;
+    }
+    .flag {
+        height: 5vh;
+        background-color: $mainbgColor;
+        padding: 100px 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        button {
+            cursor: pointer;
+            padding: 20px 30px;
+            width: 30%;
+            margin-right: 20px;
+            border: 5px solid red;
+            border-right-color: #e84e7a7a;
+            border-bottom-color: #e84e7a7a;
+            border-top-color: #5d4ee87a;
+            border-left-color: #a34ee87a;
+            outline: none;
+            background-color: transparent;
+            color: #f2f2f2;
+            text-transform: uppercase;
+            font-weight: bolder;
+            font-size: 24px;
+            font-family: monospace;
+            border-radius: 20px;
+        }
+    }
+}

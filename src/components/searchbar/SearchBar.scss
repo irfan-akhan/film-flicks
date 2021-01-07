@@ -1,0 +1,41 @@
+.search__input {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 15px 25px;
+    width: 20vw;
+    background-color: #ffffff;
+    &:focus {
+        background-color: rgb(230, 230, 230);
+        color: #000000;
+    }
+}
+.search__form {
+    position: relative;
+    animation-name: moveInTop;
+    animation-duration: 3s;
+    backface-visibility: hidden;
+    img {
+        width: 35px;
+        background-color: #e84e7a;
+        padding: 5px 20px;
+        border-radius: 20px;
+        position: absolute;
+        top: 0%;
+        left: 83%;
+    }
+}
+// Animations
+@keyframes moveInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    80% {
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
