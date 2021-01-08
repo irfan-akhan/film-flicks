@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
-
-// Lazy load the YouTube player
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    TelegramShareButton,
+    WhatsappShareButton,
+    FacebookIcon,
+    WhatsappIcon,
+    TwitterIcon,
+    TelegramIcon,
+} from 'react-share';
 
 import { tmdb } from '../../api/tmdb';
 import Footer from '../footer/Footer';
@@ -40,11 +49,13 @@ const renderSimilarMovies = movies => {
     return movies.map(movie => {
         return (
             <div className="similar__movies__item" key={movie?.id}>
-                <img
-                    className="similar__movies__poster"
-                    src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-                    alt={movie?.title}
-                />
+                <LazyLoad offset={100}>
+                    <img
+                        className="similar__movies__poster"
+                        src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+                        alt={movie?.title}
+                    />
+                </LazyLoad>
 
                 <h4 className="similar__movies__rating">
                     &#9733; {movie?.vote_average}
@@ -75,13 +86,15 @@ const renderTrailers = trailers => {
     }
     const items = trailers.map(trailer => {
         return (
-            <iframe
-                src={`https://www.youtube.com/embed/${trailer.key}`}
-                className="video__player"
-                controls
-                title="video-player"
-                frameborder="0"
-            ></iframe>
+            <LazyLoad height={200} offset={[500, 100]} scroll>
+                <iframe
+                    src={`https://www.youtube.com/embed/${trailer.key}`}
+                    className="video__player"
+                    controls
+                    title="video-player"
+                    frameborder="0"
+                ></iframe>
+            </LazyLoad>
         );
     });
     const index = Math.floor(Math.random() * items.length);
@@ -102,34 +115,53 @@ const fetchCast = castMembers => {
     return cast.map(member => {
         return (
             <li className="cast__member" key={member?.credit_id}>
-                <img
-                    src={
-                        member?.profile_path
-                            ? `https://image.tmdb.org/t/p/original${member?.profile_path}`
-                            : 'https://i.ibb.co/X2C2DQf/no-image.png'
-                    }
-                    alt={member?.name}
-                    className="cast__member__picture"
-                />
-                <h2 className="cast__member__name">{member?.name}</h2>
-                <h3 className="cast__member__role">{member?.character}</h3>
+                <div className="placeholder">
+                    <LazyLoad height={200} offset={100}>
+                        <img
+                            src={
+                                member?.profile_path
+                                    ? `https://image.tmdb.org/t/p/original${member?.profile_path}`
+                                    : 'https://i.ibb.co/X2C2DQf/no-image.png'
+                            }
+                            alt={member?.name}
+                            className="cast__member__picture"
+                        />
+                    </LazyLoad>
+                    <h2 className="cast__member__name">{member?.name}</h2>
+                    <h3 className="cast__member__role">{member?.character}</h3>
+                </div>
             </li>
         );
     });
 };
 
+const shareClickHandler = e => {
+    const buttons = document.querySelector('.share__buttons');
+    if (buttons.style.display === 'flex') {
+        buttons.style.display = 'none';
+    } else {
+        buttons.style.display = 'flex';
+    }
+};
+
 function MovieDetails(props) {
-    console.log('props', props);
     const id = props.match.params.id;
-    console.log('ID', id);
     const path = props.match.path;
-    console.log(path.includes('tv'));
     const [movie, setMovie] = useState(null);
     const [castMembers, setCastMembers] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [trailers, setTrailers] = useState([]);
     const [similarMovies, setSimilarMovies] = useState([]);
+
     useEffect(() => {
+        window.scrollTo(0, 0);
+        const buttons = document.querySelector('.share__buttons');
+        const share = document.querySelector('.share');
+        if (share && buttons) {
+            buttons.style = 'none';
+            share.style = 'block';
+        }
+
         (async () => {
             const { data } = await tmdb.get(
                 path.includes('movies')
@@ -137,8 +169,6 @@ function MovieDetails(props) {
                     : `/tv/${id}?api_key=c98379d070aea3bf6b254fd97cb04037&language=en-US`,
             );
             setMovie(data);
-            console.log('results reponse', movie);
-            console.log(data);
             const {
                 data: { cast },
             } = await tmdb.get(
@@ -168,9 +198,8 @@ function MovieDetails(props) {
             );
             setSimilarMovies(similarMovies.data.results.slice(0, 5));
         })();
-    }, [movie?.title, id]);
+    }, [movie?.title, id, path]);
 
-    console.log('movie', movie);
     return (
         <div className="movie__container">
             <Link to={'/'} className="back__button">
@@ -179,6 +208,44 @@ function MovieDetails(props) {
                     alt="back button"
                 ></img>
             </Link>
+            <div
+                className="share"
+                onClick={e => {
+                    shareClickHandler(e);
+                }}
+            >
+                <img
+                    src="https://i.ibb.co/TK1zGYh/share-outline.png"
+                    alt="share-button"
+                    border="0"
+                ></img>
+            </div>
+            <div className="share__buttons">
+                <TwitterShareButton
+                    className="twitter"
+                    url={window.location.href}
+                    quote="check this out"
+                    hashtag="Reactjs"
+                >
+                    <TwitterIcon size={32} round={true}></TwitterIcon>
+                </TwitterShareButton>
+                <TelegramShareButton
+                    className="telegram"
+                    url={window.location.href}
+                    quote="check this out"
+                    hashtag="Reactjs"
+                >
+                    <TelegramIcon size={32} round={true}></TelegramIcon>
+                </TelegramShareButton>
+                <WhatsappShareButton
+                    className="whatsapp"
+                    url={window.location.href}
+                    quote="check this out"
+                    hashtag="Reactjs"
+                >
+                    <WhatsappIcon size={32} round={true}></WhatsappIcon>
+                </WhatsappShareButton>
+            </div>
             <Link to={'/'} className="fav__button">
                 <img
                     src="https://i.ibb.co/DCMZ5w3/heart-fill.png"

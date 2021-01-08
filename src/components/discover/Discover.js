@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import { tmdb } from '../../api/tmdb';
 import { API_KEY } from '../resources';
@@ -29,19 +30,18 @@ const renderMovies = movies => {
     return movies.map(movie => {
         return (
             <div className="search__movie" key={movie.id}>
-                <img
-                    className="search__movie__poster"
-                    src={`${imageUrl}${movie.poster_path}`}
-                    alt={movie.title}
-                />
+                <LazyLoad height={200} offset={50}>
+                    <img
+                        className="search__movie__poster"
+                        src={`${imageUrl}${movie.poster_path}`}
+                        alt={movie.title}
+                    />
+                </LazyLoad>
                 <h2 className="search__movie__title">{movie.title}</h2>
-
                 <h4 className="search__movie__rating">&#9733; {movie.vote_average}</h4>
                 <h4 className="search__movie__genre">
-                    <span>Genre </span>| {renderGenres(movie.genre_ids)}
+                    {renderGenres(movie.genre_ids)}
                 </h4>
-                <h4 className="search__movie__date">Released | {movie.release_date}</h4>
-
                 <Link to={{ pathname: `/movies/${movie.id}`, state: movie }}>
                     <button className="detail__button ">View Details</button>
                 </Link>
@@ -55,6 +55,7 @@ function Discover() {
     const [totalPages, setTotalPages] = useState(1);
     const [pageNumber, setPageNumber] = useState(1);
     useEffect(() => {
+        window.scrollTo(0, 0);
         tmdb.get(
             `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}`,
         )

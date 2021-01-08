@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { movieGenres } from '../resources';
 import useFetchMovies from '../useFetchMovies';
-
+import LazyLoad from 'react-lazyload';
 import './movies.scss';
 
 const renderGenres = ids => {
@@ -25,11 +25,15 @@ const renderMovies = movies => {
     return movies?.map(movie => {
         return (
             <li className="movie__item" key={movie.id}>
-                <img
-                    className="movie__poster"
-                    src={`${imageUrl}${movie.poster_path}`}
-                    alt={movie.title || movie.name}
-                />
+                <div className="placeholder">
+                    <LazyLoad height={200} offset={100}>
+                        <img
+                            className="movie__poster"
+                            src={`${imageUrl}${movie?.poster_path}`}
+                            alt={movie.title || movie.name}
+                        />
+                    </LazyLoad>
+                </div>
                 <h2 className="movie__title">{movie.title || movie.name}</h2>
 
                 <h4 className="movie__rating">&#9733; {movie.vote_average}</h4>

@@ -9,6 +9,36 @@ $headingFontSize: 26px;
     box-shadow: -5px 5px 15px 15px #08060f;
     border-radius: 15px;
 }
+.share {
+    box-shadow: 0px 5px 5px #46454579;
+    border-radius: 50px;
+    position: fixed;
+    top: 12%;
+    right: 5%;
+    cursor: pointer;
+    padding: 10px;
+
+    img {
+        transition: all 0.2s;
+        width: 40px;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+.share__buttons {
+    box-shadow: 0px 5px 5px #46454579;
+    height: 150px;
+    display: none;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 1px;
+    position: fixed;
+    top: 22%;
+    right: 4%;
+    padding: 10px;
+    transition: all 2s;
+}
 .back__button {
     box-shadow: 0px 5px 5px #46454579;
     border-radius: 50px;
@@ -73,6 +103,9 @@ $headingFontSize: 26px;
     overflow-x: scroll;
     &__member {
         list-style: none;
+        & .placeholder {
+            width: 160px;
+        }
         &__picture {
             max-width: 160px;
             object-fit: contain;
@@ -208,7 +241,7 @@ $headingFontSize: 26px;
             border-radius: 10px;
             display: inline-block;
             margin: 10px 0;
-            transition: transform 0.2s ease-out;
+            transition: transform 0.2s ease-outfire;
             &:hover {
                 background-color: #1e144d;
                 color: #f2f2f2;
@@ -256,6 +289,7 @@ $headingFontSize: 26px;
         transition: all 0.3s;
         padding: 10px;
         border-radius: 15px;
+
         &:hover {
             box-shadow: 0px 2px 5px #46454579;
             transform: scale(1.1);

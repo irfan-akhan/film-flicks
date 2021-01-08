@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 
@@ -11,19 +12,21 @@ function Footer() {
                     <Link to="/">
                         <button>Home</button>
                     </Link>
-                    <Link to="/profile">
+                    <Link to="/user">
                         <button> Profile</button>
                     </Link>
-                    <Link to="/search">
+                    <Link to="/discover">
                         <button> Discover</button>
                     </Link>
                 </div>
-                <img
-                    className="footer__img"
-                    src="https://i.ibb.co/svrK41n/film-flicks-3.png"
-                    alt="logo"
-                    border="0"
-                ></img>
+                <LazyLoad offset={100}>
+                    <img
+                        className="footer__img"
+                        src="https://i.ibb.co/svrK41n/film-flicks-3.png"
+                        alt="logo"
+                        border="0"
+                    ></img>
+                </LazyLoad>
             </div>
             <div className="bottom">
                 <h2 className="copyright__name">
@@ -35,17 +38,21 @@ function Footer() {
                         href="https://www.linkedin.com/in/irfan-khan-4a40b31b4/"
                         className="linkedin"
                     >
-                        <img
-                            src="https://i.ibb.co/YPFsMYN/LinkedIn.png"
-                            alt="LinkedIn"
-                        ></img>
+                        <LazyLoad offset={100}>
+                            <img
+                                src="https://i.ibb.co/YPFsMYN/LinkedIn.png"
+                                alt="LinkedIn"
+                            ></img>
+                        </LazyLoad>
                     </a>
                     <a href="https://github.com/Irfan-akhan" className="github">
-                        <img
-                            src="https://i.ibb.co/SKB76WQ/github.png"
-                            alt="github"
-                            border="0"
-                        ></img>
+                        <LazyLoad offset={100}>
+                            <img
+                                src="https://i.ibb.co/SKB76WQ/github.png"
+                                alt="github"
+                                border="0"
+                            ></img>
+                        </LazyLoad>
                     </a>
                 </div>
             </div>
