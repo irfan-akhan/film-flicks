@@ -34,7 +34,7 @@ function Home() {
                         setVersionFlag(true);
                     }}
                 >
-                    Movies
+                    View Movies
                 </button>
 
                 <button
@@ -43,7 +43,7 @@ function Home() {
                     }}
                 >
                     {' '}
-                    Tv shows
+                    View Tv shows
                 </button>
             </div>
             <div className="movies">

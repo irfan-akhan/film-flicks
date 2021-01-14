@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import {
-    FacebookShareButton,
     TwitterShareButton,
     TelegramShareButton,
     WhatsappShareButton,
-    FacebookIcon,
     WhatsappIcon,
     TwitterIcon,
     TelegramIcon,
@@ -25,7 +23,7 @@ const renderReviews = reviews => {
     }
     return reviews.map(review => {
         return (
-            <div className="review__item" key={review?.id}>
+            <div data-aos="fade-right" className="review__item" key={review?.id}>
                 <h3 className="review__item__author">
                     <span>author| </span>
                     {review?.author}
@@ -48,7 +46,7 @@ const renderSimilarMovies = movies => {
     }
     return movies.map(movie => {
         return (
-            <div className="similar__movies__item" key={movie?.id}>
+            <div data-aos="fade-down" className="similar__movies__item" key={movie?.id}>
                 <LazyLoad offset={100}>
                     <img
                         className="similar__movies__poster"
@@ -88,6 +86,7 @@ const renderTrailers = trailers => {
         return (
             <LazyLoad height={200} offset={[500, 100]} scroll>
                 <iframe
+                    data-aos="fade-left"
                     src={`https://www.youtube.com/embed/${trailer.key}`}
                     className="video__player"
                     controls
@@ -155,6 +154,8 @@ function MovieDetails(props) {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        // Aos.init();
+
         const buttons = document.querySelector('.share__buttons');
         const share = document.querySelector('.share');
         if (share && buttons) {
@@ -300,7 +301,9 @@ function MovieDetails(props) {
             </header>
             <section className="details__section">
                 <h1 className="heading">Summary</h1>
-                <p className="overview">{movie?.overview}</p>{' '}
+                <p data-aos="fade-left" className="overview">
+                    {movie?.overview}
+                </p>
                 {movie?.first_air_date ? (
                     <div className="series">
                         <h1 className="heading">Details </h1>
@@ -330,14 +333,16 @@ function MovieDetails(props) {
                 ) : (
                     ''
                 )}
-                <h1 className="heading">cast</h1>
-                <ul className="cast">{fetchCast(castMembers)}</ul>
+                <div data-aos="fade-right">
+                    <h1 className="heading">cast</h1>
+                    <ul className="cast">{fetchCast(castMembers)}</ul>
+                </div>
                 <h1 className="heading">trailer / Videos</h1>
                 <div className="trailers">{renderTrailers(trailers)}</div>
                 <h1 className="heading">reviews</h1>
                 <div className="review">{renderReviews(reviews)}</div>
                 <h1 className="heading">Similar </h1>
-                <div className="similar__movies">
+                <div data-aos="fade-up" className="similar__movies">
                     {renderSimilarMovies(similarMovies)}
                 </div>
             </section>

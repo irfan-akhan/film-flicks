@@ -2,21 +2,22 @@ import React from 'react';
 import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import 'aos/dist/aos.css';
 
 function Footer() {
     return (
         <footer className="footer">
             <div className="top">
                 <div className="links">
-                    <h2 className="brand">Film flicks</h2>
+                    <h2 className="brand">Film flix</h2>
                     <Link to="/">
-                        <button>Home</button>
+                        <button className="button__link">Home</button>
                     </Link>
                     <Link to="/user">
-                        <button> Profile</button>
+                        <button className="button__link"> Profile</button>
                     </Link>
                     <Link to="/discover">
-                        <button> Discover</button>
+                        <button className="button__link"> Discover</button>
                     </Link>
                 </div>
                 <LazyLoad offset={100}>

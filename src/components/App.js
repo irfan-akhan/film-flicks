@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Discover from './discover/Discover';
 import Home from './home/Home';
+import Loader from './loader/Loader';
 import MovieDetails from './movieDetails/MovieDetails';
 import SearchResult from './searchresults/SearchResult';
 
@@ -11,24 +12,18 @@ import SearchResult from './searchresults/SearchResult';
 // const MovieDetails = lazy(() => import('./movieDetails/MovieDetails'))
 
 function App() {
-    const { loading, setLoading } = useState(true);
-    const fakeReq = () => {
-        return new Promise(resolve => setTimeout(() => resolve(), 2500));
-    };
-    useEffect(() => {
-        fakeReq()
-            .then(() => {
-                const el = document.querySelector('.loader-container');
-                if (el) {
-                    el.remove();
-                    setLoading(!loading);
-                }
-            })
-            .catch(err => console.error(err));
-    }, []);
-    if (loading) {
-        return null;
-    }
+    setTimeout(() => {
+        const loader = document.querySelector('.loader-container');
+        loader.style.display = 'block';
+
+        if (loader) {
+            setTimeout(() => {
+                loader.style.display = 'none';
+                window.scrollTo(0, 0);
+            }, 2000);
+        }
+    }, 10);
+
     return (
         <BrowserRouter>
             <Switch>
@@ -38,6 +33,7 @@ function App() {
                 <Route exact path="/discover" component={Discover} />
                 <Route exact path="/search/:key" component={SearchResult} />
             </Switch>
+            <Loader />
         </BrowserRouter>
     );
 }

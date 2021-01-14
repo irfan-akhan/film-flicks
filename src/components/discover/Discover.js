@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
 import { tmdb } from '../../api/tmdb';
+import Loader from '../loader/Loader';
 import { API_KEY } from '../resources';
 import { movieGenres } from '../resources';
 import '../searchresults/SearchResult.scss';
@@ -56,6 +57,15 @@ function Discover() {
     const [pageNumber, setPageNumber] = useState(1);
     useEffect(() => {
         window.scrollTo(0, 0);
+        setTimeout(() => {
+            const loader = document.querySelector('.loader-container');
+            loader.style.display = 'block';
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 2000);
+            }
+        }, 10);
         tmdb.get(
             `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}`,
         )
@@ -66,7 +76,8 @@ function Discover() {
             .catch(err => console.error(err));
     }, [pageNumber, totalPages]);
     return (
-        <div className="result__container" style={{ backgroundColor: '#161130' }}>
+        <div className="result__container">
+            <h1 className="container__heading">Discover Movies</h1>
             <div className="search__results">{renderMovies(movies)}</div>
 
             {pageNumber > 1 ? (
@@ -87,6 +98,7 @@ function Discover() {
             >
                 Next
             </button>
+            <Loader />
         </div>
     );
 }

@@ -3,8 +3,14 @@ import './Loader.scss';
 
 function Loader() {
     return (
-        <div className="loader">
-            <div className="content"></div>
+        <div className="loader-container">
+            <div className="loader">
+                <div className="loader">
+                    <div className="inner one"></div>
+                    <div className="inner two"></div>
+                    <div className="inner three"></div>
+                </div>
+            </div>
         </div>
     );
 }

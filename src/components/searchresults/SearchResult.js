@@ -4,6 +4,7 @@ import { API_KEY } from '../resources';
 import Navbar from '../navbar/Navbar';
 import './SearchResult.scss';
 import { Link } from 'react-router-dom';
+import Loader from '../loader/Loader';
 
 const renderResults = results => {
     const imageUrl = `https://image.tmdb.org/t/p/original`;
@@ -36,6 +37,17 @@ function SearchResult(props) {
     const term = props.match.params.key;
 
     useEffect(() => {
+        setTimeout(() => {
+            const loader = document.querySelector('.loader-container');
+            loader.style.display = 'block';
+
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    window.scrollTo(0, 0);
+                }, 3000);
+            }
+        }, 10);
         tmdb.get(
             `/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&page=1&include_adult=false`,
         )
@@ -49,6 +61,7 @@ function SearchResult(props) {
         <section className="search__page">
             <Navbar />
             <div className="search__results">{renderResults(results)}</div>
+            <Loader />
         </section>
     );
 }
