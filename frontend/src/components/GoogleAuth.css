@@ -1,0 +1,43 @@
+.profile__options {
+  width: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.profile__options h2 {
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  margin: 8px auto;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.profile__options h2::after {
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  content: '';
+  width: 0px;
+  height: 3px;
+  background-color: #e84e7a;
+  position: absolute;
+  top: 95%;
+  left: 0;
+}
+
+.profile__options h2:hover {
+  color: #e84e7a;
+}
+
+.profile__options h2:hover::after {
+  width: 100%;
+}
+/*# sourceMappingURL=GoogleAuth.css.map */

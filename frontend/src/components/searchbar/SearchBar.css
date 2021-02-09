@@ -1,0 +1,69 @@
+.search__input {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 15px 25px;
+  width: 20vw;
+  background-color: #ffffff;
+}
+
+.search__input:focus {
+  background-color: #e6e6e6;
+  color: #e84e7a;
+  letter-spacing: 1.4px;
+}
+
+.search__form {
+  position: relative;
+  -webkit-animation-name: moveInTop;
+          animation-name: moveInTop;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.search__form img {
+  width: 35px;
+  background-color: #e84e7a;
+  padding: 5px 20px;
+  border-radius: 20px;
+  position: absolute;
+  top: 0%;
+  left: 83%;
+}
+
+@-webkit-keyframes moveInTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  80% {
+    -webkit-transform: translateY(25px);
+            transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  80% {
+    -webkit-transform: translateY(25px);
+            transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+/*# sourceMappingURL=SearchBar.css.map */
