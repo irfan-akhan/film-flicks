@@ -5,7 +5,7 @@ import { tmdb } from '../../api/tmdb';
 import './banner.css';
 
 const renderMovies = (movies, title) => {
-    const movie = movies[Math.floor(Math.random() * movies.length)];
+    const movie = movies[Math.floor(Math.random() * movies?.length)];
     return (
         <header
             className="banner"

@@ -246,12 +246,7 @@ function MovieDetails(props) {
                     <WhatsappIcon size={32} round={true}></WhatsappIcon>
                 </WhatsappShareButton>
             </div>
-            <Link to={'/'} className="fav__button">
-                <img
-                    src="https://i.ibb.co/DCMZ5w3/heart-fill.png"
-                    alt="favourite button"
-                ></img>
-            </Link>
+
             <header
                 className="detail__banner"
                 style={{

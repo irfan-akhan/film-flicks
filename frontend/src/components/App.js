@@ -4,15 +4,14 @@ import Discover from './discover/Discover';
 import Home from './home/Home';
 import Loader from './loader/Loader';
 import MovieDetails from './movieDetails/MovieDetails';
-import User from './user/User';
 import SearchResult from './searchresults/SearchResult';
 
 function App() {
     setTimeout(() => {
         const loader = document.querySelector('.loader-container');
-        loader.style.display = 'block';
 
         if (loader) {
+            loader.style.display = 'block';
             setTimeout(() => {
                 loader.style.display = 'none';
                 window.scrollTo(0, 0);
@@ -27,7 +26,6 @@ function App() {
                 <Route exact path="/movies/:id" component={MovieDetails} />
                 <Route exact path="/tv/:id" component={MovieDetails} />
                 <Route exact path="/discover" component={Discover} />
-                <Route exact path="/user" component={User} />
                 <Route exact path="/search/:key" component={SearchResult} />
             </Switch>
             <Loader />

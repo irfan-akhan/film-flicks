@@ -13,9 +13,6 @@ function Footer() {
                     <Link to="/">
                         <button className="button__link">Home</button>
                     </Link>
-                    <Link to="/user">
-                        <button className="button__link"> Profile</button>
-                    </Link>
                     <Link to="/discover">
                         <button className="button__link"> Discover</button>
                     </Link>
@@ -31,7 +28,8 @@ function Footer() {
             </div>
             <div className="bottom">
                 <h2 className="copyright__name">
-                    Build by <span> khan irfan</span>
+                    <span>&copy; 2021 flim_flix</span>
+                    Build by khan irfan
                 </h2>
 
                 <div className="social__links">

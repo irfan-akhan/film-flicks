@@ -1,164 +1,173 @@
 .button {
-  padding: 5px 10px;
-  width: 90%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: rgba(0, 0, 0, 0.7);
-  font-weight: 700;
-  border: 40px solid #161130;
-  border-radius: 15px;
-  position: absolute;
-  top: 50%;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  cursor: pointer;
-  opacity: 0;
-  outline: none;
+    padding: 5px 10px;
+    width: 90%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 700;
+    border: 40px solid #161130;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    cursor: pointer;
+    opacity: 0;
+    outline: none;
 }
 
 .button:focus {
-  -webkit-transform: scale(0.92);
-          transform: scale(0.92);
+    -webkit-transform: scale(0.92);
+    transform: scale(0.92);
 }
 
 .movieList {
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 80vw;
-  overflow-x: scroll;
-  overflow-y: hidden;
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 80vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .movieList::-webkit-scrollbar {
-  height: 20px;
+    height: 20px;
 }
 
 .movieList::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px #02020272;
-          box-shadow: inset 0 0 6px #02020272;
-  border-radius: 20px;
+    -webkit-box-shadow: inset 0 0 6px #02020272;
+    box-shadow: inset 0 0 6px #02020272;
+    border-radius: 20px;
 }
 
 .movieList::-webkit-scrollbar-thumb {
-  background-color: #211943;
-  border-radius: 20px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+    background-color: #211943;
+    border-radius: 20px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
 }
 
 .movieList::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(58, 46, 116, 0.671);
+    background-color: rgba(58, 46, 116, 0.671);
 }
 
 .movieList .movie__item {
-  color: #f2f2f2;
-  font-weight: 100;
-  text-align: left;
-  padding: 10px;
-  -ms-flex-item-align: baseline;
-      align-self: baseline;
-  opacity: 0.6;
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-  width: 180px;
-  margin-right: 20px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+    color: #f2f2f2;
+    font-weight: 100;
+    text-align: left;
+    padding: 10px;
+    position: relative;
+    -ms-flex-item-align: baseline;
+    align-self: baseline;
+    opacity: 0.6;
+    -webkit-transition: -webkit-transform 1s;
+    transition: -webkit-transform 1s;
+    transition: transform 1s;
+    transition: transform 1s, -webkit-transform 1s;
+    width: 180px;
+    margin-right: 20px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .movieList .movie__item .placeholder {
-  position: relative;
-  width: 180px;
+    position: relative;
+    width: 180px;
 }
 
 .movieList .movie__item .movie__poster {
-  margin-bottom: 10px;
-  max-width: 180px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  border-radius: 5px;
-  -webkit-box-shadow: 2px 9px 9px 1px rgba(7, 7, 7, 0.501);
-          box-shadow: 2px 9px 9px 1px rgba(7, 7, 7, 0.501);
+    margin-bottom: 10px;
+    max-width: 180px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 9px 9px 1px rgba(7, 7, 7, 0.501);
+    box-shadow: 2px 9px 9px 1px rgba(7, 7, 7, 0.501);
 }
 
 .movieList .movie__item .movie__rating {
-  position: absolute;
-  top: 1%;
-  left: 3%;
-  font-size: 16px;
-  background-color: #000;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: 500;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+    position: absolute;
+    top: 2.5%;
+    left: 4.5%;
+    font-size: 16px;
+    background-color: #000;
+    margin: 0;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 
 .movieList .movie__item .movie__title {
-  font-size: 16px;
-  margin-top: 0;
+    font-size: 16px;
+    margin-top: 0;
 }
 
 .movieList .movie__item .movie__genre {
-  font-size: 13px;
-  font-weight: 600;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .movieList .movie__item .movie__overview {
-  font-size: 10px;
-  display: none;
+    font-size: 10px;
+    display: none;
 }
 
 .movieList .movie__item:hover {
-  opacity: 1;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .movieList .movie__item:hover .button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  opacity: 1;
-  -webkit-animation: moveInBottom 0.4s ease-out;
-          animation: moveInBottom 0.4s ease-out;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  background-color: #e84e7a;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
+    -webkit-animation: moveInBottom 0.4s ease-out;
+    animation: moveInBottom 0.4s ease-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #e84e7a;
 }
 
 @-webkit-keyframes movieInBottom {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-50px);
-            transform: translateY(-50px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 }
 
 @keyframes movieInBottom {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-50px);
-            transform: translateY(-50px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 }
 /*# sourceMappingURL=movies.css.map */
+
+@media only screen and (max-width: 480px) {
+    .movieList {
+        width: 100vw;
+        padding: 0;
+    }
+}
